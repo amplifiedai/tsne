@@ -22,6 +22,7 @@ defmodule Tsne.MixProject do
   defp deps do
     [
       {:ex_doc, "~> 0.29", only: :docs, runtime: false},
+      {:nimble_options, "~> 0.3.0"},
       {:rustler, ">= 0.0.0", optional: true},
       {:rustler_precompiled, "~> 0.6"}
     ]
