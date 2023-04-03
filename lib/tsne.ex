@@ -88,4 +88,31 @@ defmodule Tsne do
       opts[:metric]
     )
   end
+
+  @exact_options NimbleOptions.new!(@tsne_options)
+
+  @doc """
+  Exact t-SNE.
+
+  ## Options
+  #{NimbleOptions.docs(@barnes_hut_options)}
+  """
+  def exact(data, opts \\ []) do
+    opts = NimbleOptions.validate!(opts, @exact_options)
+
+    original_dimensions = data |> List.first() |> length()
+    data = List.flatten(data)
+
+    Native.exact(
+      data,
+      original_dimensions,
+      opts[:embedding_dimensions],
+      opts[:learning_rate],
+      opts[:epochs],
+      opts[:perplexity],
+      opts[:final_momentum],
+      opts[:momentum],
+      opts[:metric]
+    )
+  end
 end

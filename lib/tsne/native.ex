@@ -12,7 +12,21 @@ defmodule Tsne.Native do
         _perplexity,
         _theta,
         _final_momentum,
-        _momentum
+        _momentum,
+        _metric
+      ),
+      do: :erlang.nif_error(:nif_not_loaded)
+
+  def exact(
+        _data,
+        _original_dims,
+        _embedding_dims,
+        _learning_rate,
+        _epochs,
+        _perplexity,
+        _final_momentum,
+        _momentum,
+        _metric
       ),
       do: :erlang.nif_error(:nif_not_loaded)
 end
