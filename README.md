@@ -1,5 +1,9 @@
 # Tsne
 
+![CI](https://github.com/amplifiedai/tsne/actions/workflows/ci.yml/badge.svg)
+[![Documentation](http://img.shields.io/badge/hex.pm-docs-green.svg?style=flat)](https://hexdocs.pm/tsne)
+[![Package](https://img.shields.io/hexpm/v/tsne.svg)](https://hex.pm/packages/tsne)
+
 From Wikipedia: [t-distributed stochastic neighbor embedding](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding) (t-SNE) is a statistical method for visualizing high-dimensional data by giving each datapoint a location in a two or three-dimensional map.
 
 This is an extremely low effort set of bindings to the Rust [`bhtsne`](https://docs.rs/bhtsne/latest/bhtsne/) crate.
