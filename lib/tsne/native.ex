@@ -1,7 +1,14 @@
 defmodule Tsne.Native do
-  use Rustler,
+  mix_config = Mix.Project.config()
+  version = mix_config[:version]
+  github_url = mix_config[:package][:links]["GitHub"]
+
+  use RustlerPrecompiled,
     otp_app: :tsne,
-    crate: :tsne_native
+    crate: :tsne_native,
+    version: version,
+    base_url: "#{github_url}/releases/download/v#{version}",
+    force_build: System.get_env("TSNE_BUILD") in ["1", "true"]
 
   def barnes_hut(
         _data,
