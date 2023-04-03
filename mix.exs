@@ -2,7 +2,7 @@ defmodule Tsne.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/amplifiedai/tsne"
-  @version "0.1.0"
+  @version "0.2.0-dev"
 
   def project do
     [
@@ -40,10 +40,10 @@ defmodule Tsne.MixProject do
 
   defp docs do
     [
-      main: "t-SNE",
+      main: "Tsne",
       source_ref: "v#{@version}",
       source_url: @source_url,
-      extras: ["LICENSE"]
+      extras: ["LICENSE", "notebooks/dimensionality_reduction.livemd"]
     ]
   end
 
