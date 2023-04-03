@@ -2,7 +2,7 @@ defmodule Tsne.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/amplifiedai/tsne"
-  @version "0.1.0"
+  @version "0.2.0-dev"
 
   def project do
     [
