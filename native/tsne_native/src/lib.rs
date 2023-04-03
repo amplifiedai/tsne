@@ -1,3 +1,4 @@
+#[allow(clippy::too_many_arguments)]
 #[rustler::nif]
 fn barnes_hut(
     data: Vec<f32>,
@@ -31,6 +32,7 @@ fn barnes_hut(
         .collect()
 }
 
+#[allow(clippy::too_many_arguments)]
 #[rustler::nif]
 fn exact(
     data: Vec<f32>,
