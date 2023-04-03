@@ -13,7 +13,7 @@ Mix.install(
     {:nx, "~> 0.5"},
     {:rustler, "~> 0.0"},
     {:scholar, "~> 0.1"},
-    {:tsne, github: "amplifiedai/tsne"}
+    {:tsne, "~> 0.1"}
   ],
   config: [
     nx: [default_backend: EXLA.Backend]
