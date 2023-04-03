@@ -1,0 +1,57 @@
+# Dimensionality Reduction with t-SNE
+
+```elixir
+Mix.install(
+  [
+    {:exla, "~> 0.5"},
+    {:kino_vega_lite, "~> 0.1"},
+    {:nx, "~> 0.5"},
+    {:rustler, "~> 0.0"},
+    {:scholar, "~> 0.1"},
+    {:tsne, github: "amplifiedai/tsne"},
+    {:vega_lite, "~> 0.1.7"}
+  ],
+  config: [
+    nx: [default_backend: EXLA.Backend]
+  ]
+)
+```
+
+## Section
+
+```elixir
+alias VegaLite, as: Vl
+```
+
+Generate some random data.
+
+```elixir
+key = Nx.Random.key(42)
+{data, _} = Nx.Random.normal(key, 0, 1, shape: {1000, 256}, type: :f32)
+```
+
+Then, because t-SNE does better if it doesn't need to reduce massive vectors, we use `Scholar` to extract the principal components. This brings our dimensions down to 50, which t-SNE can handle more readily.
+
+```elixir
+principal_components = Scholar.Decomposition.PCA.fit_transform(data, num_components: 50)
+```
+
+Okay, now we can get the embeddings. We convert to a list of lists, which is what `Tsne` expects, then call `Tsne.barnes_hut/1`. You can also pass in options in `Tsne.barnes_hut/2`.
+
+```elixir
+embeddings =
+  principal_components
+  |> Nx.to_list()
+  |> Tsne.barnes_hut()
+  |> Enum.map(fn [x, y] -> %{x: x, y: y} end)
+```
+
+And we can visualise the results with `VegaLite`. Might be more interesting with real, labeled data.
+
+```elixir
+Vl.new()
+|> Vl.data_from_values(embeddings)
+|> Vl.mark(:point)
+|> Vl.encode_field(:x, "x", type: :quantitative)
+|> Vl.encode_field(:y, "y", type: :quantitative)
+```

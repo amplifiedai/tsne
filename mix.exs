@@ -40,10 +40,10 @@ defmodule Tsne.MixProject do
 
   defp docs do
     [
-      main: "t-SNE",
+      main: "Tsne",
       source_ref: "v#{@version}",
       source_url: @source_url,
-      extras: ["LICENSE"]
+      extras: ["LICENSE", "notebooks/dimensionality_reduction.livemd"]
     ]
   end
 
