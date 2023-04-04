@@ -85,7 +85,7 @@ defmodule Tsne do
       opts[:theta],
       opts[:final_momentum],
       opts[:momentum],
-      opts[:metric]
+      "#{opts[:metric]}"
     )
   end
 
@@ -112,7 +112,7 @@ defmodule Tsne do
       opts[:perplexity],
       opts[:final_momentum],
       opts[:momentum],
-      opts[:metric]
+      "#{opts[:metric]}"
     )
   end
 end
