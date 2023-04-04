@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed argument error: the Rust NIF expeected a string, not an atom
+
+## [v0.1.1] - 2023-04-04
+
+### Fixed
+
 - Update `nimble_options` so as not to conflict with other libraries
 
 ## [v0.1.0] - 2023-04-03
