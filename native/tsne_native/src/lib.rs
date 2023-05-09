@@ -1,5 +1,5 @@
 #[allow(clippy::too_many_arguments)]
-#[rustler::nif]
+#[rustler::nif(schedule = "DirtyCpu")]
 fn barnes_hut(
     data: Vec<f32>,
     original_dims: usize,
@@ -33,7 +33,7 @@ fn barnes_hut(
 }
 
 #[allow(clippy::too_many_arguments)]
-#[rustler::nif]
+#[rustler::nif(schedule = "DirtyCpu")]
 fn exact(
     data: Vec<f32>,
     original_dims: usize,
